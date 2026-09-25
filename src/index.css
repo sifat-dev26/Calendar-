@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Manrope", "-apple-system", "BlinkMacSystemFont", "Segoe UI", sans-serif;
+  --color-google-blue: #1a73e8;
+  --color-google-green: #0f9d58;
+  --color-google-grid: #dadce0;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  body {
+    @apply antialiased font-sans text-stone-900 bg-white;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-stone-300 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone-400;
+  }
+
+  /* Basic Animation Utilities */
+  .animate-in {
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide-in-from-right-12 {
+    animation-name: slide-in-right;
+  }
+
+  .slide-in-from-bottom-8 {
+    animation-name: slide-in-bottom;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .zoom-in-95 {
+    animation-name: zoom-in;
+  }
+
+  @keyframes slide-in-right {
+    from { transform: translateX(3rem); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slide-in-bottom {
+    from { transform: translateY(2rem); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes zoom-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* 
+  DYNAMIC THEME OVERRIDES 
+  These enforce the global themes upon all nested grids and modals.
+*/
+
+/* Black Theme */
+.theme-black .bg-white,
+.theme-black .bg-white\/90,
+.theme-black .bg-\[\#fcfcfc\],
+.theme-black .bg-gray-50,
+.theme-black .bg-gray-50\/50,
+.theme-black .bg-blue-50,
+.theme-black .bg-gray-100,
+.theme-black .bg-gray-100\/50 {
+  background-color: #000 !important;
+}
+.theme-black .text-stone-950,
+.theme-black .text-stone-900,
+.theme-black .text-stone-850,
+.theme-black .text-stone-800,
+.theme-black .text-stone-750,
+.theme-black .text-stone-700,
+.theme-black .text-stone-650,
+.theme-black .text-stone-600,
+.theme-black .text-gray-950,
+.theme-black .text-gray-900,
+.theme-black .text-gray-850,
+.theme-black .text-gray-800,
+.theme-black .text-gray-750,
+.theme-black .text-gray-700,
+.theme-black .text-gray-650,
+.theme-black .text-gray-600,
+.theme-black .text-[#0d2a4a],
+.theme-black .text-blue-700,
+.theme-black input,
+.theme-black textarea,
+.theme-black select {
+  color: #fff !important;
+}
+.theme-black .text-stone-500,
+.theme-black .text-stone-400,
+.theme-black .text-gray-500,
+.theme-black .text-gray-400 {
+  color: #a3a3a3 !important;
+}
+/* Premium box styling for subtask components & lists on Pure Black */
+.theme-black .bg-stone-50\/40,
+.theme-black .bg-stone-50\/50,
+.theme-black .bg-violet-50\/50,
+.theme-black .bg-violet-950\/10,
+.theme-black .bg-amber-50\/40,
+.theme-black .bg-amber-50\/10 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-black .border-google-grid,
+.theme-black .border-google-grid\/50,
+.theme-black .border-google-grid\/30,
+.theme-black .border-gray-200,
+.theme-black .border-blue-100,
+.theme-black .border-gray-100,
+.theme-black .border-violet-100,
+.theme-black .border-violet-100\/10,
+.theme-black .border-stone-100 {
+  border-color: #1f2937 !important;
+}
+
+/* Elegant Task Card Overrides for Pure Black Theme to prevent merging into the background */
+.theme-black .task-card {
+  border-width: 1px !important;
+  border-style: solid !important;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.4) !important;
+}
+.theme-black .task-card.task-card-blue {
+  background-color: rgba(26, 115, 232, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+.theme-black .task-card.task-card-blue h3,
+.theme-black .task-card.task-card-blue .text-\[11px\] {
+  color: #93c5fd !important;
+}
+.theme-black .task-card.task-card-blue p,
+.theme-black .task-card.task-card-blue .text-\[9px\] {
+  color: rgba(147, 197, 253, 0.85) !important;
+}
+
+.theme-black .task-card.task-card-green {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+.theme-black .task-card.task-card-green h3,
+.theme-black .task-card.task-card-green .text-\[11px\] {
+  color: #6ee7b7 !important;
+}
+.theme-black .task-card.task-card-green p,
+.theme-black .task-card.task-card-green .text-\[9px\] {
+  color: rgba(110, 231, 183, 0.85) !important;
+}
+
+.theme-black .task-card.task-card-yellow {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+}
+.theme-black .task-card.task-card-yellow h3,
+.theme-black .task-card.task-card-yellow .text-\[11px\] {
+  color: #fde047 !important;
+}
+.theme-black .task-card.task-card-yellow p,
+.theme-black .task-card.task-card-yellow .text-\[9px\] {
+  color: rgba(253, 224, 71, 0.85) !important;
+}
+
+.theme-black .task-card.task-card-red {
+  background-color: rgba(239, 68, 68, 0.18) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+.theme-black .task-card.task-card-red h3,
+.theme-black .task-card.task-card-red .text-\[11px\] {
+  color: #fca5a5 !important;
+}
+.theme-black .task-card.task-card-red p,
+.theme-black .task-card.task-card-red .text-\[9px\] {
+  color: rgba(252, 165, 165, 0.85) !important;
+}
+
+
+/* Misty Teal Theme */
+.theme-teal .bg-white,
+.theme-teal .bg-white\/90,
+.theme-teal .bg-\[\#fcfcfc\] {
+  background-color: #f2faf9 !important;
+}
+.theme-teal .bg-gray-50,
+.theme-teal .bg-gray-50\/50,
+.theme-teal .bg-gray-100,
+.theme-teal .bg-gray-100\/50 {
+  background-color: #e5f4f3 !important;
+}
+.theme-teal .border-google-grid,
+.theme-teal .border-google-grid\/50,
+.theme-teal .border-google-grid\/30,
+.theme-teal .border-gray-200,
+.theme-teal .border-gray-100 {
+  border-color: #c0e6e4 !important;
+}
+.theme-teal .text-google-blue {
+  color: #368c86 !important;
+}
+
+/* Sky Blue Theme */
+.theme-cyan .bg-white,
+.theme-cyan .bg-white\/90,
+.theme-cyan .bg-\[\#fcfcfc\] {
+  background-color: #f3fcfd !important;
+}
+.theme-cyan .bg-gray-50,
+.theme-cyan .bg-gray-50\/50,
+.theme-cyan .bg-gray-100,
+.theme-cyan .bg-gray-100\/50 {
+  background-color: #e6f8fc !important;
+}
+.theme-cyan .border-google-grid,
+.theme-cyan .border-google-grid\/50,
+.theme-cyan .border-google-grid\/30,
+.theme-cyan .border-gray-200,
+.theme-cyan .border-gray-100 {
+  border-color: #c7f2fb !important;
+}
+.theme-cyan .text-google-blue {
+  color: #1390ad !important;
+}
+
+/* Pastel Peach Theme */
+.theme-peach .bg-white,
+.theme-peach .bg-white\/90,
+.theme-peach .bg-\[\#fcfcfc\] {
+  background-color: #fffbf2 !important;
+}
+.theme-peach .bg-gray-50,
+.theme-peach .bg-gray-50\/50,
+.theme-peach .bg-gray-100,
+.theme-peach .bg-gray-100\/50 {
+  background-color: #fff3db !important;
+}
+.theme-peach .border-google-grid,
+.theme-peach .border-google-grid\/50,
+.theme-peach .border-google-grid\/30,
+.theme-peach .border-gray-200,
+.theme-peach .border-gray-100 {
+  border-color: #fbe6be !important;
+}
+.theme-peach .text-google-blue {
+  color: #cc9025 !important;
+}
+
+/* Bright Red Theme */
+.theme-coral .bg-white,
+.theme-coral .bg-white\/90,
+.theme-coral .bg-\[\#fcfcfc\] {
+  background-color: #fff5f5 !important;
+}
+.theme-coral .bg-gray-50,
+.theme-coral .bg-gray-50\/50,
+.theme-coral .bg-gray-100,
+.theme-coral .bg-gray-100\/50 {
+  background-color: #ffe5e5 !important;
+}
+.theme-coral .border-google-grid,
+.theme-coral .border-google-grid\/50,
+.theme-coral .border-google-grid\/30,
+.theme-coral .border-gray-200,
+.theme-coral .border-gray-100 {
+  border-color: #fdcccc !important;
+}
+.theme-coral .text-google-blue {
+  color: #ff4040 !important;
+}
+
+/* Rose Theme */
+.theme-rose .bg-white,
+.theme-rose .bg-white\/90,
+.theme-rose .bg-\[\#fcfcfc\] {
+  background-color: #fbf4f7 !important;
+}
+.theme-rose .bg-gray-50,
+.theme-rose .bg-gray-50\/50,
+.theme-rose .bg-gray-100,
+.theme-rose .bg-gray-100\/50 {
+  background-color: #f3e7ed !important;
+}
+.theme-rose .border-google-grid,
+.theme-rose .border-google-grid\/50,
+.theme-rose .border-google-grid\/30,
+.theme-rose .border-gray-200,
+.theme-rose .border-gray-100 {
+  border-color: #e5cbd7 !important;
+}
+.theme-rose .text-google-blue {
+  color: #a64c75 !important;
+}
+
+/* Sage Theme */
+.theme-sage .bg-white,
+.theme-sage .bg-white\/90,
+.theme-sage .bg-\[\#fcfcfc\] {
+  background-color: #f4f8f1 !important;
+}
+.theme-sage .bg-gray-50,
+.theme-sage .bg-gray-50\/50,
+.theme-sage .bg-gray-100,
+.theme-sage .bg-gray-100\/50 {
+  background-color: #eaf0e6 !important;
+}
+.theme-sage .border-google-grid,
+.theme-sage .border-google-grid\/50,
+.theme-sage .border-google-grid\/30,
+.theme-sage .border-gray-200,
+.theme-sage .border-gray-100 {
+  border-color: #d1dfcb !important;
+}
+.theme-sage .text-google-blue {
+  color: #5d805b !important;
+}
+
+/* Gray Theme */
+.theme-gray .bg-white,
+.theme-gray .bg-white\/90,
+.theme-gray .bg-\[\#fcfcfc\] {
+  background-color: #f9fafb !important;
+}
+.theme-gray .bg-gray-50,
+.theme-gray .bg-gray-50\/50,
+.theme-gray .bg-gray-100,
+.theme-gray .bg-gray-100\/50 {
+  background-color: #f3f4f6 !important;
+}
+.theme-gray .border-google-grid,
+.theme-gray .border-google-grid\/50,
+.theme-gray .border-google-grid\/30,
+.theme-gray .border-gray-200,
+.theme-gray .border-gray-100 {
+  border-color: #e5e7eb !important; /* gray-200 */
+}
+

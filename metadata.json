@@ -1,0 +1,10 @@
+{
+  "name": "Chronos",
+  "description": "A non-traditional daily planner combining a visual grid timetable with interactive checklist status tracking. And has AI built in.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

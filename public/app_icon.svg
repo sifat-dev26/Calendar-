@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect x="0" y="0" width="512" height="512" fill="#0D0D0D" />
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer rounded square -->
+    <rect x="120" y="120" width="272" height="272" rx="76" stroke-width="32" />
+    <!-- Two horizontal bars -->
+    <line x1="196" y1="216" x2="316" y2="216" stroke-width="32" />
+    <line x1="196" y1="296" x2="316" y2="296" stroke-width="32" />
+  </g>
+</svg>
